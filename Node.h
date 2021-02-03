@@ -4,4 +4,6 @@ class Node
 {
 public :
 	Node();
+private:
+	int a;
 };
