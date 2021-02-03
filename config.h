@@ -11,8 +11,8 @@
 
 #include "func.h"
 
-#define HEIGHT 500.
 #define WIDTH 1000.
+#define HEIGHT 500.
 #define AXE_Z 50.
 
 #define NB_STAR 750

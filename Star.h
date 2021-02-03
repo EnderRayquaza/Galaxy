@@ -7,6 +7,7 @@ class Block;
 class Star
 {
 public:
+	Star();
 	Star(double posx, double posy, double posz, int index, bool BlckH = false);
 
 	void update_speed(std::vector<Star> vStar);
