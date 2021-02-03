@@ -5,5 +5,5 @@ class Node
 public :
 	Node();
 private:
-	int c;
+	int z;
 };
