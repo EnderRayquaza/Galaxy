@@ -15,8 +15,8 @@
 #define HEIGHT 500.
 #define AXE_Z 50.
 
-#define NB_STAR 750
-#define NB_BH 1
+#define NB_STAR 10
+#define NB_BH 0
 #define RAD 1.*std::pow(10, -44)
 
 #define LY 9.461*std::pow(10, 13)

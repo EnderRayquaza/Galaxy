@@ -3,12 +3,15 @@
 
 #include "Star.h"
 
-class Star;
+//class Star;
 
 class Node
 {
 public :
 	Node(int lvl, double posx, double posy, double posz);
+
+	std::array<sf::Vector3f, 2> get_pos();
+	sf::RectangleShape get_img();
 private:
 	sf::RectangleShape m_img;
 	sf::Vector3f m_posA;
@@ -19,5 +22,6 @@ private:
 	sf::Vector3f m_posMass;
 	double m_mass;
 	int m_lvl;
-	Star m_star;
+	//Star m_star;
+	bool m_is_leave;
 };
