@@ -45,7 +45,7 @@ int main()
                     for (int k(0); k < 2; k++)
                     {
                         vecNode.push_back(Node(lvl, i * WIDTH / lvl, j * HEIGHT / lvl, k * AXE_Z / lvl));
-                       std::cout << " | x1 : " << vecNode[vecNode.size() - 1].get_pos()[0].x;
+                        /*std::cout << " | x1 : " << vecNode[vecNode.size() - 1].get_pos()[0].x;
                         std::cout << " | y1 : " << vecNode[vecNode.size() - 1].get_pos()[0].y;
                         std::cout << " | z1 : " << vecNode[vecNode.size() - 1].get_pos()[0].z;
                         std::cout << std::endl;
@@ -53,7 +53,7 @@ int main()
                         std::cout << " | y2 : " << vecNode[vecNode.size() - 1].get_pos()[1].y;
                         std::cout << " | z2 : " << vecNode[vecNode.size() - 1].get_pos()[1].z;
                         std::cout << std::endl;
-                        std::cout << std::endl;
+                        std::cout << std::endl;*/
                         
                     }
         }

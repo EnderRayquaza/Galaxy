@@ -20,4 +20,4 @@ Node::Node(int lvl, double posx, double posy, double posz)
 
 std::array<sf::Vector3f, 2> Node::get_pos() { return std::array<sf::Vector3f, 2> {m_posA, m_posB}; }
 
-sf::RectangleShape Node::get_img() { m_img.setPosition(sf::Vector2f(m_posA.x, m_posB.x)); return m_img; }
+sf::RectangleShape Node::get_img() { m_img.setPosition(sf::Vector2f(m_posA.x, m_posA.y)); return m_img; }
