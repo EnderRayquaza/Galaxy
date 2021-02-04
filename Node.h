@@ -12,7 +12,8 @@ public :
 	Node(int lvl, double posx, double posy, double posz);
 
 	std::array<sf::Vector3f, 2> get_pos();
-	sf::RectangleShape get_img();
+	sf::RectangleShape get_img_xy();
+	sf::RectangleShape get_img_xz();
 private:
 	sf::RectangleShape m_img;
 	sf::Vector3f m_posA;

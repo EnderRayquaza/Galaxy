@@ -23,7 +23,9 @@ int main()
 
     std::vector<Node> vNode;
     vecNode = createOctree(vecStar, vNode, Node(1, 0, 0, 0), 2);
-
+    std::cout << "Nb noeuds : " << vecNode.size() << std::endl;
+    bool axe(false);
+    std::cout << "Axe :" << axe << std::endl;
 	while (win.isOpen())
 	{
         sf::Event ev;
@@ -31,22 +33,36 @@ int main()
         {
             if (ev.type == sf::Event::Closed)
                 win.close();
+            else if (ev.type == sf::Event::KeyPressed)
+            {
+                if (axe)
+                    axe = false;
+                else
+                    axe = true;
+                std::cout << "Axe :" << axe << std::endl;
+            }
+
         }
 
         win.clear(sf::Color::Black);
-
         for (size_t i(0); i < vecStar.size(); i++)
         {
             vecStar[i].update_speed(vecStar);
         }
         for (size_t i(0); i < vecNode.size(); i++)
         {
-            win.draw(vecNode[i].get_img());
+            if(axe)
+                win.draw(vecNode[i].get_img_xy());
+            else
+                win.draw(vecNode[i].get_img_xz());
         }
         for (size_t i(0); i < vecStar.size(); i++)
         {
             //vecStar[i].move();
-            win.draw(vecStar[i].get_img());
+            if (axe)
+                win.draw(vecStar[i].get_img_xy());
+            else
+                win.draw(vecStar[i].get_img_xz());
         }
         //std::cout << "________________" << std::endl;
         win.display();

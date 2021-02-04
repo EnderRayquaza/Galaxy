@@ -14,9 +14,9 @@
 
 #define WIDTH 1000.
 #define HEIGHT 500.
-#define AXE_Z 50.
+#define AXE_Z 500.
 
-#define NB_STAR 10
+#define NB_STAR 5
 #define NB_BH 0
 #define RAD 1.*std::pow(10, -44)
 

@@ -29,7 +29,13 @@ Node::Node(int lvl, double posx, double posy, double posz)
 	m_img = sf::RectangleShape(sf::Vector2f(m_width, m_height));
 	m_img.setFillColor(sf::Color::Black);
 	m_img.setOutlineThickness(2);
-	m_img.setOutlineColor(sf::Color::Yellow);
+	if(lvl == 1)
+		m_img.setOutlineColor(sf::Color::Yellow);
+	else if(lvl == 2)
+		m_img.setOutlineColor(sf::Color::Blue);
+	else if(lvl == 3)
+		m_img.setOutlineColor(sf::Color::Green);
+
 	//m_star = Star(-1, -1, -1, -1);
 	m_posMass = { 0, 0, 0 };
 	m_mass = 0;
@@ -38,4 +44,6 @@ Node::Node(int lvl, double posx, double posy, double posz)
 
 std::array<sf::Vector3f, 2> Node::get_pos() { return std::array<sf::Vector3f, 2> {m_posA, m_posB}; }
 
-sf::RectangleShape Node::get_img() { m_img.setPosition(sf::Vector2f(m_posA.x, m_posA.y)); return m_img; }
+sf::RectangleShape Node::get_img_xy() { m_img.setPosition(sf::Vector2f(m_posA.x, m_posA.y)); return m_img; }
+
+sf::RectangleShape Node::get_img_xz() { m_img.setPosition(sf::Vector2f(m_posA.x, m_posA.z)); return m_img; }

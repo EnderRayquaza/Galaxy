@@ -15,7 +15,8 @@ public:
 	bool destroy(bool force = false);
 
 	int get_index();
-	sf::CircleShape get_img();
+	sf::CircleShape get_img_xy();
+	sf::CircleShape get_img_xz();
 	sf::Vector3f get_pos();
 	long double get_mass();
 	long double get_acc();

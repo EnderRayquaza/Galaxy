@@ -33,7 +33,9 @@ Star::Star(double posx, double posy, double posz, int index, bool BlckH)
 
 int Star::get_index() { return m_index; }
 
-sf::CircleShape Star::get_img() { m_img.setPosition(sf::Vector2f(m_pos.x, m_pos.y));  return m_img; }
+sf::CircleShape Star::get_img_xy() { m_img.setPosition(sf::Vector2f(m_pos.x, m_pos.y));  return m_img; }
+
+sf::CircleShape Star::get_img_xz() { m_img.setPosition(sf::Vector2f(m_pos.x, m_pos.z));  return m_img; }
 
 sf::Vector3f Star::get_pos() { return m_pos; }
 
