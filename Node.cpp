@@ -29,11 +29,11 @@ Node::Node(int lvl, double posx, double posy, double posz)
 	m_img = sf::RectangleShape(sf::Vector2f(m_width, m_height));
 	m_img.setFillColor(sf::Color::Black);
 	m_img.setOutlineThickness(2);
-	if(lvl == 1)
+	if(lvl == 2)
 		m_img.setOutlineColor(sf::Color::Yellow);
-	else if(lvl == 2)
+	else if(lvl == 4)
 		m_img.setOutlineColor(sf::Color::Blue);
-	else if(lvl == 3)
+	else if(lvl == 6)
 		m_img.setOutlineColor(sf::Color::Green);
 
 	//m_star = Star(-1, -1, -1, -1);
