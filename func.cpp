@@ -43,3 +43,51 @@ double averageWithoutIndex(std::vector<double> vec, int index)
     std::cout << "Σ : " << Σ << std::endl;
     return Σ;
 }
+
+int vecInt2int(std::vector<int> int_)
+{
+    int rtrn(0);
+    std::string str;
+    for (int i(0); i < int_.size(); i++)
+        str += std::to_string(int_[i]);
+    rtrn = stoi(str, 0, 2);
+    return rtrn;
+}
+
+std::array<Node, 8> create8nodes(Node mainNode, int lvl)
+{
+    std::array<Node, 8> rtrn;
+    for (int i(0); i < 2; i++)
+        for (int j(0); j < 2; j++)
+            for (int k(0); k < 2; k++)
+            {
+                rtrn[vecInt2int({ i, j, k })] = (Node(lvl,
+                    mainNode.get_pos()[0].x + i * (WIDTH / lvl),
+                    mainNode.get_pos()[0].y + j * (HEIGHT / lvl),
+                    mainNode.get_pos()[0].z + k * (AXE_Z / lvl)));
+            }
+    return rtrn;
+}
+
+std::vector<Node> createOctree(std::vector<Star> vStar, std::vector<Node> vNode, Node node, int lvl)
+{
+    vNode.push_back(node);
+    std::cout << vNode.size() << std::endl;
+    int nbStar(0);
+    for (int i(0); i < vStar.size(); i++)
+    {
+        if (((node.get_pos()[0].x < vStar[i].get_pos().x < node.get_pos()[1].x) &&
+            (node.get_pos()[0].y < vStar[i].get_pos().y < node.get_pos()[1].y) &&
+            (node.get_pos()[0].z < vStar[i].get_pos().z < node.get_pos()[1].z)))
+            nbStar++;
+    }
+    if(nbStar > 1 && vNode.size() < 20)
+    {
+        std::array<Node, 8> arrNode(create8nodes(node, lvl));
+        for (int i(0); i < 8; i++)
+        {
+            vNode = createOctree(vStar, vNode, arrNode[i], lvl * 2);
+        }       
+    }
+    return vNode;
+}

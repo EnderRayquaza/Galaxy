@@ -21,59 +21,8 @@ int main()
                 random(AXE_Z / 16., 14 * AXE_Z / 16.), i, true));
     }
 
-    int lvl(1), n_temp(0);
-    vecNode.push_back(Node(lvl, 0, 0, 0));
-    lvl *= 2;
-    for(int n(0); n<vecNode.size(); n++)
-    {
-        std::cout << "Node (" << n <<") : "<< 
-            vecNode[n].get_pos()[0].x << "/" <<
-            vecNode[n].get_pos()[0].y << "/" <<
-            vecNode[n].get_pos()[0].z << " - " <<
-            vecNode[n].get_pos()[1].x << "/" <<
-            vecNode[n].get_pos()[1].y << "/" <<
-            vecNode[n].get_pos()[1].z << std::endl << std::endl;
-        int nb_star(0);
-        /*for (int i(0); i < vecStar.size(); i++)
-        {
-            if ((vecNode[n].get_pos()[0].x < vecStar[i].get_pos().x < vecNode[n].get_pos()[1].x) &&
-                (vecNode[n].get_pos()[0].y < vecStar[i].get_pos().y < vecNode[n].get_pos()[1].y) &&
-                (vecNode[n].get_pos()[0].z < vecStar[i].get_pos().z < vecNode[n].get_pos()[1].z))
-            {
-                nb_star++;
-            }
-        }*/
-        if (nb_star > 1 || true)
-        {
-            //std::cout << nb_star << std::endl;
-            n_temp += 8;
-            for(int i(0); i < 2; i++)
-                for(int j(0); j < 2; j++)
-                    for (int k(0); k < 2; k++)
-                    {
-                        vecNode.push_back(Node(lvl,
-                            vecNode[n].get_pos()[0].x + i * ( WIDTH / lvl),
-                            vecNode[n].get_pos()[0].y +  j * ( HEIGHT / lvl),
-                            vecNode[n].get_pos()[0].z +  k * ( AXE_Z / lvl)));
-                        //std::cout << "lvl: " << lvl << std::endl;
-                        std::cout << "Node (" << vecNode.size()-1 << ") : " << std::endl;
-                        std::cout << " | x1 : " << vecNode[vecNode.size() - 1].get_pos()[0].x;
-                        std::cout << " | y1 : " << vecNode[vecNode.size() - 1].get_pos()[0].y;
-                        std::cout << " | z1 : " << vecNode[vecNode.size() - 1].get_pos()[0].z;
-                        std::cout << std::endl;
-                        std::cout << std::endl;
-                        
-                    }
-        }
-        if (n_temp >= 8)
-        {
-            lvl *= 2;
-            n_temp = 0;
-        }
-
-        if (n > 2) 
-            break;
-    }
+    std::vector<Node> vNode;
+    vecNode = createOctree(vecStar, vNode, Node(1, 0, 0, 0));
 
 	while (win.isOpen())
 	{

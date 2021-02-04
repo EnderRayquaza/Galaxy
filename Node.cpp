@@ -1,8 +1,26 @@
 #include "Node.h"
 
+Node::Node()
+{
+	m_img = sf::RectangleShape();
+	m_posA = { -1, -1, -1 };
+	m_posB = m_posA;
+	m_width = -1;
+	m_height = -1;
+	m_axe_z = -1;
+	m_posMass = m_posA;
+	m_mass= -1;
+	m_lvl = -1;
+	//Star m_star;
+	m_is_leave = false;
+}
+
 Node::Node(int lvl, double posx, double posy, double posz)
 {
-	m_lvl = lvl;
+	if (lvl != 0)
+		m_lvl = lvl;
+	else
+		lvl = 1;
 	m_width = WIDTH / m_lvl;
 	m_height = HEIGHT / m_lvl;
 	m_axe_z = AXE_Z / m_lvl;

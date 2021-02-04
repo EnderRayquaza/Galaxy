@@ -8,6 +8,7 @@
 class Node
 {
 public :
+	Node();
 	Node(int lvl, double posx, double posy, double posz);
 
 	std::array<sf::Vector3f, 2> get_pos();
