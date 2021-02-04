@@ -72,16 +72,16 @@ std::array<Node, 8> create8nodes(Node mainNode, int lvl)
 std::vector<Node> createOctree(std::vector<Star> vStar, std::vector<Node> vNode, Node node, int lvl)
 {
     vNode.push_back(node);
-    std::cout << vNode.size() << std::endl;
+    //std::cout << vNode.size() << std::endl;
     int nbStar(0);
     for (int i(0); i < vStar.size(); i++)
     {
-        if (((node.get_pos()[0].x < vStar[i].get_pos().x < node.get_pos()[1].x) &&
-            (node.get_pos()[0].y < vStar[i].get_pos().y < node.get_pos()[1].y) &&
-            (node.get_pos()[0].z < vStar[i].get_pos().z < node.get_pos()[1].z)))
+        if (((node.get_pos()[0].x <= vStar[i].get_pos().x && vStar[i].get_pos().x < node.get_pos()[1].x) &&
+             (node.get_pos()[0].y <= vStar[i].get_pos().y && vStar[i].get_pos().y < node.get_pos()[1].y) &&
+             (node.get_pos()[0].z <= vStar[i].get_pos().z && vStar[i].get_pos().z < node.get_pos()[1].z)))
             nbStar++;
     }
-    if(nbStar > 1 && vNode.size() < 20)
+    if(nbStar > 1)
     {
         std::array<Node, 8> arrNode(create8nodes(node, lvl));
         for (int i(0); i < 8; i++)

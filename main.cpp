@@ -22,7 +22,7 @@ int main()
     }
 
     std::vector<Node> vNode;
-    vecNode = createOctree(vecStar, vNode, Node(1, 0, 0, 0));
+    vecNode = createOctree(vecStar, vNode, Node(1, 0, 0, 0), 2);
 
 	while (win.isOpen())
 	{
