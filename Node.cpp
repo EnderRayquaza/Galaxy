@@ -47,3 +47,5 @@ std::array<sf::Vector3f, 2> Node::get_pos() { return std::array<sf::Vector3f, 2>
 sf::RectangleShape Node::get_img_xy() { m_img.setPosition(sf::Vector2f(m_posA.x, m_posA.y)); return m_img; }
 
 sf::RectangleShape Node::get_img_xz() { m_img.setPosition(sf::Vector2f(m_posA.x, m_posA.z)); return m_img; }
+
+sf::RectangleShape Node::get_img_yz() { m_img.setPosition(sf::Vector2f(m_posA.y, m_posA.z)); return m_img; }

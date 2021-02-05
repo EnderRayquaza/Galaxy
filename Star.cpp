@@ -37,6 +37,8 @@ sf::CircleShape Star::get_img_xy() { m_img.setPosition(sf::Vector2f(m_pos.x, m_p
 
 sf::CircleShape Star::get_img_xz() { m_img.setPosition(sf::Vector2f(m_pos.x, m_pos.z));  return m_img; }
 
+sf::CircleShape Star::get_img_yz() { m_img.setPosition(sf::Vector2f(m_pos.y, m_pos.z));  return m_img; }
+
 sf::Vector3f Star::get_pos() { return m_pos; }
 
 long double Star::get_mass() { return m_mass; }

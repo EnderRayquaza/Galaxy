@@ -12,7 +12,7 @@
 
 #include "func.h"
 
-#define WIDTH 1000.
+#define WIDTH 500.
 #define HEIGHT 500.
 #define AXE_Z 500.
 

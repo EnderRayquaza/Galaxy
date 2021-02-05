@@ -24,8 +24,8 @@ int main()
     std::vector<Node> vNode;
     vecNode = createOctree(vecStar, vNode, Node(1, 0, 0, 0), 2);
     std::cout << "Nb noeuds : " << vecNode.size() << std::endl;
-    bool axe(false);
-    std::cout << "Axe :" << axe << std::endl;
+    int axe(0);
+    std::cout << "Axe : xy" << std::endl;
 	while (win.isOpen())
 	{
         sf::Event ev;
@@ -35,14 +35,25 @@ int main()
                 win.close();
             else if (ev.type == sf::Event::KeyPressed)
             {
-                if (axe)
-                    axe = false;
+                if (axe == 0)
+                {
+                    axe = 1;
+                    std::cout << "Axe : xz" << std::endl;
+                }
+                else if (axe == 1)
+                {
+                    axe = 2;
+                    std::cout << "Axe : yz" << std::endl;
+                }
                 else
-                    axe = true;
-                std::cout << "Axe :" << axe << std::endl;
+                {
+                    axe = 0;
+                    std::cout << "Axe : xy" << std::endl;
+                }
+                
             }
 
-        }
+        } 
 
         win.clear(sf::Color::Black);
         for (size_t i(0); i < vecStar.size(); i++)
@@ -51,18 +62,22 @@ int main()
         }
         for (size_t i(0); i < vecNode.size(); i++)
         {
-            if(axe)
+            if(axe == 0)
                 win.draw(vecNode[i].get_img_xy());
-            else
+            else if(axe == 1)
                 win.draw(vecNode[i].get_img_xz());
+            else if(axe == 2)
+                win.draw(vecNode[i].get_img_yz());
         }
         for (size_t i(0); i < vecStar.size(); i++)
         {
             //vecStar[i].move();
-            if (axe)
+            if (axe == 0)
                 win.draw(vecStar[i].get_img_xy());
-            else
+            else if(axe == 1)
                 win.draw(vecStar[i].get_img_xz());
+            else
+                win.draw(vecStar[i].get_img_yz());
         }
         //std::cout << "________________" << std::endl;
         win.display();

@@ -14,6 +14,8 @@ public :
 	std::array<sf::Vector3f, 2> get_pos();
 	sf::RectangleShape get_img_xy();
 	sf::RectangleShape get_img_xz();
+	sf::RectangleShape get_img_yz();
+
 private:
 	sf::RectangleShape m_img;
 	sf::Vector3f m_posA;
