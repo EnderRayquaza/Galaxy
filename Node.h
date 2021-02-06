@@ -9,7 +9,7 @@ class Node
 {
 public :
 	Node();
-	Node(int lvl, double posx, double posy, double posz);
+	Node(double posx, double posy, double posz, double posx2, double posy2, double posz2);
 
 	std::array<sf::Vector3f, 2> get_pos();
 	sf::RectangleShape get_img_xy();
@@ -23,9 +23,4 @@ private:
 	double m_width;
 	double m_height;
 	double m_axe_z;
-	sf::Vector3f m_posMass;
-	double m_mass;
-	int m_lvl;
-	//Star m_star;
-	bool m_is_leave;
 };

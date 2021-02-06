@@ -61,34 +61,32 @@ std::array<Node, 8> create8nodes(Node mainNode, int lvl)
         for (int j(0); j < 2; j++)
             for (int k(0); k < 2; k++)
             {
-                rtrn[vecInt2int({ i, j, k })] = (Node(lvl,
-                    mainNode.get_pos()[0].x + i * (WIDTH / lvl),
-                    mainNode.get_pos()[0].y + j * (HEIGHT / lvl),
-                    mainNode.get_pos()[0].z + k * (AXE_Z / lvl)));
+                rtrn[vecInt2int({ i, j, k })] = Node();
             }
     return rtrn;
 }
 
 void createOctree(std::vector<Star> vStar)
 {
-    /*for (int i(0); i < vStar.size(); i++)
+    Node Octree(0, 0, 0, WIDTH, HEIGHT, AXE_Z);
+    for (int i(0); i < NB_STAR; i++)
     {
-        if (((node.get_pos()[0].x <= vStar[i].get_pos().x && vStar[i].get_pos().x < node.get_pos()[1].x) &&
-             (node.get_pos()[0].y <= vStar[i].get_pos().y && vStar[i].get_pos().y < node.get_pos()[1].y) &&
-             (node.get_pos()[0].z <= vStar[i].get_pos().z && vStar[i].get_pos().z < node.get_pos()[1].z)))
-            nbStar++;
-    }*/
-    int Octree(0);
-    for (int i(0); i < vStar.size(); i++)
-    {
-        insert(vStar[i], Octree);
+        insert(vStar[i], Octree, vStar);
     }
     deleteLeaves(Octree);
 }
 
-void insert(Star i, int octree)
+void insert(Star i, Node node, std::vector<Star> vStar)
 {
-    if (true)
+    int nbStar(0);
+    for (int i(0); i < NB_STAR; i++)
+    {
+    if (((node.get_pos()[0].x <= vStar[i].get_pos().x && vStar[i].get_pos().x < node.get_pos()[1].x) &&
+         (node.get_pos()[0].y <= vStar[i].get_pos().y && vStar[i].get_pos().y < node.get_pos()[1].y) &&
+         (node.get_pos()[0].z <= vStar[i].get_pos().z && vStar[i].get_pos().z < node.get_pos()[1].z)))
+        nbStar++;
+    }
+    if (nbStar > 1)
     {
         int c(0);
         insert(i, c);
