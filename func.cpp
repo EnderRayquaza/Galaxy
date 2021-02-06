@@ -86,7 +86,22 @@ void createOctree(std::vector<Star> vStar)
     deleteLeaves(Octree);
 }
 
-void insert(Star star, int octree)
+void insert(Star i, int octree)
 {
-
+    if (true)
+    {
+        int c(0);
+        insert(i, c);
+    }
+    else if (true)
+    {
+        //ajouter 8 fils au noeud n dans l’octTree
+        //mettre la particule déjà dans n dans le fils correspondant
+        int c(0);
+        insert(i, c);
+    }
+    else if (true)
+    {
+        //ranger la particule i dans le noeud n
+    }
 }

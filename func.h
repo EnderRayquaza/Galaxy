@@ -20,6 +20,6 @@ std::array<Node, 8> create8nodes(Node mainNode, int lvl);
 
 void createOctree(std::vector<Star> vStar);
 
-void insert(Star star, int octree);
+void insert(Star i, int octree);
 
 void deleteLeaves(int octree);
