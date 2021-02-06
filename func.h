@@ -18,4 +18,8 @@ int vecInt2int(std::vector<int> int_);
 
 std::array<Node, 8> create8nodes(Node mainNode, int lvl);
 
-std::vector<Node> createOctree(std::vector<Star> vStar, std::vector<Node> vNode, Node node, int lvl = 1);
+void createOctree(std::vector<Star> vStar);
+
+void insert(Star star, int octree);
+
+void deleteLeaves(int octree);

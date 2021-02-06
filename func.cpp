@@ -69,25 +69,24 @@ std::array<Node, 8> create8nodes(Node mainNode, int lvl)
     return rtrn;
 }
 
-std::vector<Node> createOctree(std::vector<Star> vStar, std::vector<Node> vNode, Node node, int lvl)
+void createOctree(std::vector<Star> vStar)
 {
-    vNode.push_back(node);
-    //std::cout << vNode.size() << std::endl;
-    int nbStar(0);
-    for (int i(0); i < vStar.size(); i++)
+    /*for (int i(0); i < vStar.size(); i++)
     {
         if (((node.get_pos()[0].x <= vStar[i].get_pos().x && vStar[i].get_pos().x < node.get_pos()[1].x) &&
              (node.get_pos()[0].y <= vStar[i].get_pos().y && vStar[i].get_pos().y < node.get_pos()[1].y) &&
              (node.get_pos()[0].z <= vStar[i].get_pos().z && vStar[i].get_pos().z < node.get_pos()[1].z)))
             nbStar++;
-    }
-    if(nbStar > 1)
+    }*/
+    int Octree(0);
+    for (int i(0); i < vStar.size(); i++)
     {
-        std::array<Node, 8> arrNode(create8nodes(node, lvl));
-        for (int i(0); i < 8; i++)
-        {
-            vNode = createOctree(vStar, vNode, arrNode[i], lvl * 2);
-        }       
+        insert(vStar[i], Octree);
     }
-    return vNode;
+    deleteLeaves(Octree);
+}
+
+void insert(Star star, int octree)
+{
+
 }
