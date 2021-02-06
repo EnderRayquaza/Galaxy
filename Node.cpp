@@ -10,6 +10,8 @@ Node::Node(double posx, double posy, double posz, double posx2, double posy2, do
 	m_img.setOutlineColor(sf::Color::Yellow);
 }
 
+void Node::add_star(Star star) { m_star = star; }
+
 std::array<sf::Vector3f, 2> Node::get_pos() { return std::array<sf::Vector3f, 2> {m_posA, m_posB}; }
 
 sf::RectangleShape Node::get_img_xy() { m_img.setPosition(sf::Vector2f(m_posA.x, m_posA.y)); return m_img; }

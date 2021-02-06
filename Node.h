@@ -11,6 +11,8 @@ public :
 	Node();
 	Node(double posx, double posy, double posz, double posx2, double posy2, double posz2);
 
+	void add_star(Star star);
+
 	std::array<sf::Vector3f, 2> get_pos();
 	sf::RectangleShape get_img_xy();
 	sf::RectangleShape get_img_xz();
@@ -23,4 +25,5 @@ private:
 	double m_width;
 	double m_height;
 	double m_axe_z;
+	Star m_star;
 };

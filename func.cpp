@@ -54,14 +54,20 @@ int vecInt2int(std::vector<int> int_)
     return rtrn;
 }
 
-std::array<Node, 8> create8nodes(Node mainNode, int lvl)
+std::array<Node, 8> create8nodes(Node mainNode)
 {
     std::array<Node, 8> rtrn;
     for (int i(0); i < 2; i++)
         for (int j(0); j < 2; j++)
             for (int k(0); k < 2; k++)
             {
-                rtrn[vecInt2int({ i, j, k })] = Node();
+                rtrn[vecInt2int({ i, j, k })] = Node(
+                    i*mainNode.get_pos()[1].x/2.,
+                    j*mainNode.get_pos()[1].y/2.,
+                    k*mainNode.get_pos()[1].z/2.,
+                    mainNode.get_pos()[1].x/2. + i*mainNode.get_pos()[1].x/2. ,
+                    mainNode.get_pos()[1].y/2. + j*mainNode.get_pos()[1].y/2. ,
+                    mainNode.get_pos()[1].z/2. + k*mainNode.get_pos()[1].z/2.);
             }
     return rtrn;
 }
@@ -86,20 +92,33 @@ void insert(Star i, Node node, std::vector<Star> vStar)
          (node.get_pos()[0].z <= vStar[i].get_pos().z && vStar[i].get_pos().z < node.get_pos()[1].z)))
         nbStar++;
     }
-    if (nbStar > 1)
+    if (nbStar >= 1)
     {
-        int c(0);
-        insert(i, c);
+        Node c(findChild(node, i));
+        insert(i, c, vStar);
     }
-    else if (true)
+    else if (false)
     {
         //ajouter 8 fils au noeud n dans l’octTree
         //mettre la particule déjà dans n dans le fils correspondant
-        int c(0);
-        insert(i, c);
+        Node c;
+        insert(i, c, vStar);
     }
-    else if (true)
+    else if (nbStar == 0)
     {
-        //ranger la particule i dans le noeud n
+        node.add_star(i);
     }
+}
+
+Node findChild(Node node, Star star)
+{
+    std::array<Node, 8> arr(create8nodes(node));
+    for (int i(0); i < 8; i++)
+    {
+        if (((arr[i].get_pos()[0].x <= star.get_pos().x && star.get_pos().x < arr[i].get_pos()[1].x) &&
+            (arr[i].get_pos()[0].y <= star.get_pos().y && star.get_pos().y < arr[i].get_pos()[1].y) &&
+            (arr[i].get_pos()[0].z <= star.get_pos().z && star.get_pos().z < arr[i].get_pos()[1].z)))
+            return arr[i];
+    }
+    std::cout << "Erreur : Etolie non trouvée" << std::endl;
 }
