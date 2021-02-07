@@ -10,6 +10,7 @@ int main()
 	sf::RenderWindow win(sf::VideoMode(WIDTH, HEIGHT), "Galaxie");
     std::vector<Star> vecStar;
     std::vector<Node> vecNode;
+    Node Octree;
 
     for (size_t i(0); i < NB_STAR+NB_BH; i++)
     {
@@ -21,9 +22,8 @@ int main()
                 random(AXE_Z / 16., 14 * AXE_Z / 16.), i, true));
     }
 
-    std::vector<Node> vNode;
-    vecNode = createOctree(vecStar, vNode, Node(1, 0, 0, 0), 2);
-    std::cout << "Nb noeuds : " << vecNode.size() << std::endl;
+    Octree = createOctree(vecStar);
+    vecNode = TestOctree(Octree);
     int axe(0);
     std::cout << "Axe : xy" << std::endl;
 	while (win.isOpen())

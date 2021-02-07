@@ -18,10 +18,14 @@ int vecInt2int(std::vector<int> int_);
 
 std::array<Node, 8> create8nodes(Node mainNode);
 
-void createOctree(std::vector<Star> vStar);
+Node createOctree(std::vector<Star> vStar);
 
 void insert(Star i, Node node, std::vector<Star> vStar);
 
 Node findChild(Node node, Star star);
 
 void deleteLeaves(Node octree);
+
+std::vector<sf::RectangleShape> displayOctree(Node Octree, int axe);
+
+std::vector<Node> TestOctree(Node);

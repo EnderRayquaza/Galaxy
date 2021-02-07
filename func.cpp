@@ -61,25 +61,21 @@ std::array<Node, 8> create8nodes(Node mainNode)
         for (int j(0); j < 2; j++)
             for (int k(0); k < 2; k++)
             {
-                rtrn[vecInt2int({ i, j, k })] = Node(
-                    i*mainNode.get_pos()[1].x/2.,
-                    j*mainNode.get_pos()[1].y/2.,
-                    k*mainNode.get_pos()[1].z/2.,
-                    mainNode.get_pos()[1].x/2. + i*mainNode.get_pos()[1].x/2. ,
-                    mainNode.get_pos()[1].y/2. + j*mainNode.get_pos()[1].y/2. ,
-                    mainNode.get_pos()[1].z/2. + k*mainNode.get_pos()[1].z/2.);
+                rtrn[vecInt2int({ i, j, k })] = Node(mainNode);
             }
+    mainNode.add_child(rtrn);
     return rtrn;
 }
 
-void createOctree(std::vector<Star> vStar)
+Node createOctree(std::vector<Star> vStar)
 {
     Node Octree(0, 0, 0, WIDTH, HEIGHT, AXE_Z);
     for (int i(0); i < NB_STAR; i++)
     {
         insert(vStar[i], Octree, vStar);
     }
-    deleteLeaves(Octree);
+    //deleteLeaves(Octree);
+    return Octree;
 }
 
 void insert(Star i, Node node, std::vector<Star> vStar)
@@ -121,4 +117,23 @@ Node findChild(Node node, Star star)
             return arr[i];
     }
     std::cout << "Erreur : Etolie non trouvée" << std::endl;
+}
+
+std::vector<sf::RectangleShape> displayOctree(Node Octree, int axe)
+{
+    std::vector<sf::RectangleShape> rtrn;
+
+}
+
+std::vector<Node> TestOctree(Node octree)
+{
+    std::vector<Node> rtrn{ octree };
+    if (&octree.get_childs()[0] != nullptr)
+        for (int i(0); i < 8; i++)
+        {
+            TestOctree(octree.get_childs()[i]);
+        }
+    else
+        std::cout << "Leave !" << std::endl;
+    return rtrn;
 }
