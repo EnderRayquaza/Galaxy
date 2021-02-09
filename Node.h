@@ -1,9 +1,8 @@
 #pragma once
 #include "config.h"
-
 #include "Star.h"
 
-//class Star;
+class Star;
 
 class Node
 {
@@ -28,7 +27,7 @@ private:
 	double m_width;
 	double m_height;
 	double m_axe_z;
-	Star m_star;
-	std::array<Node, 1> m_father;
-	std::array<Node, 8> m_childs;
+	Star *m_star;
+	std::vector<Node> m_father;
+	std::array<Node, 8> *m_childs;
 };

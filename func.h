@@ -6,6 +6,8 @@
 class Star;
 class Node;
 
+void debug(std::string);
+
 int random(int a, int b);
 
 int fake_random(int a, int b);

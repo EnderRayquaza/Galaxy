@@ -2,8 +2,6 @@
 
 #include "config.h"
 
-class Block;
-
 class Star
 {
 public:

@@ -1,5 +1,7 @@
 ﻿#include "func.h"
 
+void debug(std::string str) { std::cout << str << std::endl; }
+
 int random(int a, int b)
 {
     std::random_device rd;
@@ -72,6 +74,7 @@ Node createOctree(std::vector<Star> vStar)
     Node Octree(0, 0, 0, WIDTH, HEIGHT, AXE_Z);
     for (int i(0); i < NB_STAR; i++)
     {
+        debug("i : " + std::to_string(i));
         insert(vStar[i], Octree, vStar);
     }
     //deleteLeaves(Octree);
@@ -115,6 +118,8 @@ Node findChild(Node node, Star star)
             (arr[i].get_pos()[0].y <= star.get_pos().y && star.get_pos().y < arr[i].get_pos()[1].y) &&
             (arr[i].get_pos()[0].z <= star.get_pos().z && star.get_pos().z < arr[i].get_pos()[1].z)))
             return arr[i];
+        else
+            debug("Not Here");
     }
     std::cout << "Erreur : Etolie non trouvée" << std::endl;
 }
