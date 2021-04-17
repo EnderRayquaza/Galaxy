@@ -71,12 +71,12 @@ void Star::update_speed(std::vector<Star> vStar)
 		vy += vec_tot[i].y;
 		vz += vec_tot[i].z;
 	}
-	if (vec_tot.size() != 0)
+	/*if (vec_tot.size() != 0)
 	{
 		m_dir.x = vx / vec_tot.size();
 		m_dir.y = vy / vec_tot.size();
 		m_dir.z = vz / vec_tot.size();
-	}
+	}*/
 
 	if (m_mass == 0)
 		m_acc = 0;
